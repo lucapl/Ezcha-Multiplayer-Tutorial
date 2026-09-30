@@ -142,8 +142,6 @@ public partial class Player : CharacterBody2D
 			_Velocity.X = Mathf.MoveToward(_Velocity.X,0.0f,reduction*delta);
 		}
 
-		GD.Print(_Velocity.X);
-
 		switch(CurrentState)
 		{
 			case State.IDLE: 

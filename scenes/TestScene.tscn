@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bul3qi20e2js1"]
 
 [ext_resource type="PackedScene" uid="uid://hpwaslsx5kpe" path="res://objects/player/Player.tscn" id="1_2gju5"]
+[ext_resource type="PackedScene" uid="uid://dia8ube2fdqm0" path="res://objects/coin/Coin.tscn" id="2_rlkm5"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_sovli"]
 
@@ -47,3 +48,12 @@ texture = SubResource("GradientTexture1D_pl8ho")
 
 [node name="1" parent="." unique_id=940412363 instance=ExtResource("1_2gju5")]
 position = Vector2(602, 327)
+
+[node name="Coin" parent="." unique_id=704317066 instance=ExtResource("2_rlkm5")]
+position = Vector2(159, 302)
+
+[node name="Coin2" parent="." unique_id=1281545323 instance=ExtResource("2_rlkm5")]
+position = Vector2(-10, 336)
+
+[node name="Coin3" parent="." unique_id=1758720108 instance=ExtResource("2_rlkm5")]
+position = Vector2(-165, 398)

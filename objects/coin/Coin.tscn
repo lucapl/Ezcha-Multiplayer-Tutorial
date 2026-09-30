@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dia8ube2fdqm0"]
+
+[ext_resource type="Texture2D" uid="uid://c1kl2kag5rw2q" path="res://objects/coin/sprites/coin_bronze.svg" id="1_e474i"]
+[ext_resource type="Script" uid="uid://drde4shdldxhx" path="res://objects/coin/Coin.cs" id="1_jis85"]
+[ext_resource type="Texture2D" uid="uid://bpedmud571nll" path="res://objects/coin/sprites/coin_bronze_side.svg" id="2_rhi4t"]
+[ext_resource type="Texture2D" uid="uid://b4rgh5s8kgrb7" path="res://objects/coin/sprites/coin_gold.svg" id="3_3a0w5"]
+[ext_resource type="Texture2D" uid="uid://2hhrawtoh1nf" path="res://objects/coin/sprites/coin_gold_side.svg" id="4_jis85"]
+[ext_resource type="Texture2D" uid="uid://c6xn5td4tmq7q" path="res://objects/coin/sprites/coin_silver.svg" id="5_e2a46"]
+[ext_resource type="Texture2D" uid="uid://cak05gna6te7o" path="res://objects/coin/sprites/coin_silver_side.svg" id="6_fdn8v"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_fdskr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8maj4"]
+animations = [{
+"frames": [{
+"duration": 1.75,
+"texture": ExtResource("1_e474i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rhi4t")
+}],
+"loop": 1,
+"name": &"bronze",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.75,
+"texture": ExtResource("3_3a0w5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jis85")
+}],
+"loop": 1,
+"name": &"gold",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.75,
+"texture": ExtResource("5_e2a46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fdn8v")
+}],
+"loop": 1,
+"name": &"silver",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pl8ho"]
+
+[node name="Coin" type="Area2D" unique_id=704317066]
+script = ExtResource("1_jis85")
+metadata/_edit_group_ = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=376765428]
+replication_config = SubResource("SceneReplicationConfig_fdskr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=619207141]
+sprite_frames = SubResource("SpriteFrames_8maj4")
+animation = &"gold"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1284337487]
+shape = SubResource("CircleShape2D_pl8ho")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
