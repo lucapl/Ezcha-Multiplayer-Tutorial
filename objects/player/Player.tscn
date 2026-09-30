@@ -24,11 +24,14 @@ properties/2/replication_mode = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sllil"]
 radius = 37.0
-height = 96.0
+height = 90.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pl8ho"]
 radius = 35.0
-height = 82.0
+height = 80.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sllil"]
+size = Vector2(77, 63)
 
 [node name="Player" type="CharacterBody2D" unique_id=940412363]
 script = ExtResource("1_sllil")
@@ -41,18 +44,30 @@ replication_config = SubResource("SceneReplicationConfig_n6yx8")
 replication_config = SubResource("SceneReplicationConfig_o6ghu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=254480876]
+position = Vector2(0, -61)
 sprite_frames = ExtResource("2_sllil")
 animation = &"walk"
 frame_progress = 0.91869897
 
 [node name="NormalCollision" type="CollisionShape2D" parent="." unique_id=585887968]
-position = Vector2(0, 15)
+position = Vector2(0, -48)
 shape = SubResource("CapsuleShape2D_sllil")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1856107476]
+position = Vector2(0, -61)
 offset = Vector2(0, -64)
 
 [node name="DuckCollision" type="CollisionShape2D" parent="." unique_id=463865611]
-position = Vector2(0, 20)
+position = Vector2(0, -42)
 shape = SubResource("CapsuleShape2D_pl8ho")
 disabled = true
+
+[node name="HitDetection" type="Area2D" parent="." unique_id=444084738]
+position = Vector2(1, -41)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetection" unique_id=615522248]
+position = Vector2(-1.5, 9.5)
+shape = SubResource("RectangleShape2D_sllil")
+
+[connection signal="body_entered" from="HitDetection" to="." method="OnHitDetectorBodyEntered"]

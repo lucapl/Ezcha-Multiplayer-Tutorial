@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bul3qi20e2js1"]
 
 [ext_resource type="PackedScene" uid="uid://hpwaslsx5kpe" path="res://objects/player/Player.tscn" id="1_2gju5"]
+[ext_resource type="PackedScene" uid="uid://dho3j56alrbb8" path="res://objects/enemy/Enemy.tscn" id="1_n77mx"]
 [ext_resource type="PackedScene" uid="uid://dia8ube2fdqm0" path="res://objects/coin/Coin.tscn" id="2_rlkm5"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_sovli"]
@@ -21,6 +22,22 @@ colors = PackedColorArray(0.24733675, 0.09055004, 9.62615e-08, 1, 0.19903684, 0.
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_pl8ho"]
 gradient = SubResource("Gradient_n77mx")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pl8ho"]
+size = Vector2(42, 41)
+
+[sub_resource type="QuadMesh" id="QuadMesh_lca4r"]
+
+[sub_resource type="Gradient" id="Gradient_b1a3n"]
+colors = PackedColorArray(0.16795179, 0.21976945, 0.45915002, 1, 0.9972696, 0.99999994, 0.8411575, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yr05f"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3n4t4"]
+width = 64
+height = 64
+noise = SubResource("FastNoiseLite_yr05f")
+color_ramp = SubResource("Gradient_b1a3n")
 
 [node name="TestScene" type="Node2D" unique_id=1288163226]
 
@@ -46,6 +63,22 @@ scale = Vector2(500, 5000)
 mesh = SubResource("QuadMesh_8maj4")
 texture = SubResource("GradientTexture1D_pl8ho")
 
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=587010744]
+position = Vector2(-432, 433)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1962293469]
+position = Vector2(11, 10.5)
+shape = SubResource("RectangleShape2D_pl8ho")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D2" unique_id=1857164997]
+position = Vector2(11.000013, 10.500003)
+scale = Vector2(41.999973, 40.999992)
+mesh = SubResource("QuadMesh_lca4r")
+texture = SubResource("NoiseTexture2D_3n4t4")
+
+[node name="Enemy" parent="." unique_id=1677775338 instance=ExtResource("1_n77mx")]
+position = Vector2(-213, 435)
+
 [node name="1" parent="." unique_id=940412363 instance=ExtResource("1_2gju5")]
 position = Vector2(602, 327)
 
@@ -56,4 +89,4 @@ position = Vector2(159, 302)
 position = Vector2(-10, 336)
 
 [node name="Coin3" parent="." unique_id=1758720108 instance=ExtResource("2_rlkm5")]
-position = Vector2(-165, 398)
+position = Vector2(-105, 364)

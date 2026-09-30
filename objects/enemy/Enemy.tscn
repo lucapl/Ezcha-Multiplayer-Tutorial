@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dho3j56alrbb8"]
+
+[ext_resource type="Script" uid="uid://clnuf5jem672l" path="res://objects/enemy/Enemy.cs" id="1_4tx33"]
+[ext_resource type="SpriteFrames" uid="uid://ltsvwqrkl2" path="res://objects/enemy/sprites/mouse_sprite_frames.tres" id="2_eqiq4"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_cwscf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pl8ho"]
+size = Vector2(52, 44)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1677775338]
+script = ExtResource("1_4tx33")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1617511747]
+position = Vector2(0, -31)
+sprite_frames = ExtResource("2_eqiq4")
+animation = &"walk"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=38619782]
+replication_config = SubResource("SceneReplicationConfig_cwscf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=202151759]
+position = Vector2(1, -23)
+shape = SubResource("RectangleShape2D_pl8ho")

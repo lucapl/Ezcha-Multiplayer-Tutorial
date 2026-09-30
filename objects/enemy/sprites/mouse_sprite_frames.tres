@@ -1,0 +1,27 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://ltsvwqrkl2"]
+
+[ext_resource type="Texture2D" uid="uid://d3fvs3vki1fjn" path="res://objects/enemy/sprites/mouse_rest.svg" id="1_v81tx"]
+[ext_resource type="Texture2D" uid="uid://cnstrqiadka6i" path="res://objects/enemy/sprites/mouse_walk_a.svg" id="2_b8bcx"]
+[ext_resource type="Texture2D" uid="uid://5g4nrdb4obv" path="res://objects/enemy/sprites/mouse_walk_b.svg" id="3_cwas7"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_v81tx")
+}],
+"loop": 1,
+"name": &"rest",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b8bcx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cwas7")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]

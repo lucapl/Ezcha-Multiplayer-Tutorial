@@ -326,4 +326,33 @@ public partial class Player : CharacterBody2D
 		_ProcessInput((float)delta);
 		_ProcessMovement((float)delta);
 	}
+
+	public void OnHitDetectorBodyEntered(Node2D body)
+	{
+		if(!_Local) return;
+		
+		if(body is Enemy localEnemy)
+		{
+			if (CurrentState == State.HIT) return;
+			
+			GD.Print(GlobalPosition.Y);
+			GD.Print(localEnemy.GlobalPosition.Y);
+			if (GlobalPosition.Y < localEnemy.GlobalPosition.Y - localEnemy.Height)
+			{
+				Jump();
+				if(Multiplayer.IsServer())
+				{
+					localEnemy.Destroy();
+				}
+				else
+				{
+					localEnemy.RpcId(1,"Destroy");
+				}
+			}
+			else
+			{
+				HitBy(localEnemy);
+			}
+		}
+	}
 }
