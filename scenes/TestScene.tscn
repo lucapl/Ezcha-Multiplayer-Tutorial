@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bul3qi20e2js1"]
+
+[ext_resource type="PackedScene" uid="uid://hpwaslsx5kpe" path="res://objects/player/Player.tscn" id="1_2gju5"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_sovli"]
+
+[sub_resource type="Gradient" id="Gradient_rlkm5"]
+colors = PackedColorArray(0.15356043, 0.38762125, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lca4r"]
+gradient = SubResource("Gradient_rlkm5")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8maj4"]
+size = Vector2(4978, 477)
+
+[sub_resource type="QuadMesh" id="QuadMesh_8maj4"]
+
+[sub_resource type="Gradient" id="Gradient_n77mx"]
+colors = PackedColorArray(0.24733675, 0.09055004, 9.62615e-08, 1, 0.19903684, 0.430882, 9.62615e-07, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pl8ho"]
+gradient = SubResource("Gradient_n77mx")
+
+[node name="TestScene" type="Node2D" unique_id=1288163226]
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="." unique_id=1286993455]
+position = Vector2(455.06598, 226.65411)
+rotation = -1.5707964
+scale = Vector2(1993.454, 3629.9824)
+mesh = SubResource("QuadMesh_sovli")
+texture = SubResource("GradientTexture1D_lca4r")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=533524323]
+position = Vector2(587, 713)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=387058242]
+position = Vector2(13, -1.5)
+shape = SubResource("RectangleShape2D_8maj4")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D" unique_id=1895571005]
+position = Vector2(-0.15945244, 0.020549238)
+rotation = -1.5707964
+scale = Vector2(500, 5000)
+mesh = SubResource("QuadMesh_8maj4")
+texture = SubResource("GradientTexture1D_pl8ho")
+
+[node name="1" parent="." unique_id=940412363 instance=ExtResource("1_2gju5")]
+position = Vector2(602, 327)
