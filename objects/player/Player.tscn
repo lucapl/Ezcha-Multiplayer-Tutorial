@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://hpwaslsx5kpe"]
+
+[ext_resource type="Script" uid="uid://470l23koomtw" path="res://objects/player/Player.cs" id="1_sllil"]
+[ext_resource type="SpriteFrames" uid="uid://1iurqfulmfjc" path="res://objects/player/sprites/Character_Green.tres" id="2_sllil"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_n6yx8"]
+properties/0/path = NodePath(".:Character")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:CoinsCollected")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_o6ghu"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:CurrentState")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath(".:Direction")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sllil"]
+radius = 37.0
+height = 96.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pl8ho"]
+radius = 35.0
+height = 82.0
+
+[node name="Player" type="CharacterBody2D" unique_id=940412363]
+script = ExtResource("1_sllil")
+metadata/_edit_group_ = true
+
+[node name="ServerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1452633547]
+replication_config = SubResource("SceneReplicationConfig_n6yx8")
+
+[node name="ClientSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1557776996]
+replication_config = SubResource("SceneReplicationConfig_o6ghu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=254480876]
+sprite_frames = ExtResource("2_sllil")
+animation = &"walk"
+frame_progress = 0.91869897
+
+[node name="NormalCollision" type="CollisionShape2D" parent="." unique_id=585887968]
+position = Vector2(0, 15)
+shape = SubResource("CapsuleShape2D_sllil")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1856107476]
+offset = Vector2(0, -64)
+
+[node name="DuckCollision" type="CollisionShape2D" parent="." unique_id=463865611]
+position = Vector2(0, 20)
+shape = SubResource("CapsuleShape2D_pl8ho")
+disabled = true
